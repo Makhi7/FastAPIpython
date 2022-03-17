@@ -4,6 +4,9 @@ from fastapi import FastAPI,Path
 # create API obj
 # to access it later with getter and setters
 app = FastAPI()
+# command to run server
+# uvicorn myapi:app --reload
+
 
 # dictionary
 students = {
@@ -28,7 +31,7 @@ def index():
 # endpoint parameter 
 # returns data relating to input
 @app.get("/get-student/{student_id}")
-def index(student_id: int =Path(None, description = "The ID of student I want to view", gt=0, lt=3)):
+def get_student(student_id: int =Path(None, description = "The ID of student I want to view", gt=0, lt=3)):
     return students[student_id]
 
 
